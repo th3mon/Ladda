@@ -412,6 +412,15 @@
 			length = radius * 0.6,
 			width = radius < 7 ? 2 : 3;
 
+		// Look for custom spinner
+		var
+			customSpinnerContainer = button.querySelector('.ladda-spinner'),
+			customSpinnerConstructorName = customSpinnerContainer.getAttribute('data-spinner');
+
+		if (customSpinnerConstructorName) {
+			return new window[customSpinnerConstructorName](customSpinnerContainer);
+		}
+
 		return new Spinner( {
 			color: spinnerColor || '#fff',
 			lines: spinnerLines || 12,
